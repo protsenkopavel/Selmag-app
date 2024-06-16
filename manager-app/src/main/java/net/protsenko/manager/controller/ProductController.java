@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.protsenko.manager.controller.payload.UpdateProductPayload;
-import net.protsenko.manager.entity.Product;
 import net.protsenko.manager.service.ProductService;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;

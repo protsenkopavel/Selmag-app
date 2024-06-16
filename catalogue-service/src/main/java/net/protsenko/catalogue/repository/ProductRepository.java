@@ -1,6 +1,6 @@
-package net.protsenko.manager.repository;
+package net.protsenko.catalogue.repository;
 
-import net.protsenko.manager.entity.Product;
+import net.protsenko.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

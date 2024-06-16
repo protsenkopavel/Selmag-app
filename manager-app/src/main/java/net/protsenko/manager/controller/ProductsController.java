@@ -3,7 +3,6 @@ package net.protsenko.manager.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.protsenko.manager.controller.payload.NewProductPayload;
-import net.protsenko.manager.entity.Product;
 import net.protsenko.manager.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

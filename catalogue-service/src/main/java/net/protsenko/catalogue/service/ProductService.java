@@ -1,6 +1,6 @@
-package net.protsenko.manager.service;
+package net.protsenko.catalogue.service;
 
-import net.protsenko.manager.entity.Product;
+import net.protsenko.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,10 +1,9 @@
-package net.protsenko.manager.repository;
+package net.protsenko.catalogue.repository;
 
-import net.protsenko.manager.entity.Product;
+import net.protsenko.catalogue.entity.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 @Repository
 public class InMemoryProductRepositoryImpl implements ProductRepository {

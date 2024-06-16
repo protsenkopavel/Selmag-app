@@ -1,8 +1,8 @@
-package net.protsenko.manager.service;
+package net.protsenko.catalogue.service;
 
 import lombok.RequiredArgsConstructor;
-import net.protsenko.manager.entity.Product;
-import net.protsenko.manager.repository.ProductRepository;
+import net.protsenko.catalogue.entity.Product;
+import net.protsenko.catalogue.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
