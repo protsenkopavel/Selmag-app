@@ -16,4 +16,6 @@ stack:
 features:
 - 
 services:
--
+- catalogue-service (rest)
+- manager-app (mvc)
+- customer-app (webflux)
