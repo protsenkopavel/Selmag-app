@@ -77,7 +77,7 @@ class ProductsControllerTest {
                 .createProduct("Новый товар", "Описание нового товара");
 
         // when
-        var result = this.controller.createProduct(payload, model, response);
+        var result = this.controller.createProduct(payload, model);
 
         // then
         assertEquals("redirect:/catalogue/products/1", result);
@@ -99,7 +99,7 @@ class ProductsControllerTest {
                 .createProduct("  ", null);
 
         // when
-        var result = this.controller.createProduct(payload, model, response);
+        var result = this.controller.createProduct(payload, model);
 
         // then
         assertEquals("catalogue/products/new_product", result);

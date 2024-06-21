@@ -10,7 +10,7 @@ stack:
 - spring data jpa, hibernate
 - postgres + flyway
 - lombok
-- junit
+- junit, mockito, wiremock
 - ?
 
 features:
