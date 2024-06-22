@@ -9,10 +9,9 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FavoriteProduct {
+public class FavouriteProduct {
 
     private UUID id;
 
     private int productId;
-
 }
