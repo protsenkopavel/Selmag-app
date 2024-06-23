@@ -4,7 +4,7 @@
 
 stack:
 
-- spring boot (web, validation)
+- spring boot (web, validation, webflux)
 - security (oauth2, keycloak)
 - thymeleaf
 - spring data jpa, hibernate
@@ -19,3 +19,4 @@ services:
 - catalogue-service (rest)
 - manager-app (mvc)
 - customer-app (webflux)
+- feedback-service (rest-webflux)
