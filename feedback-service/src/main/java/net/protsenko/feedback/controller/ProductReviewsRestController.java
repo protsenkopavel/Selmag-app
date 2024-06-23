@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
@@ -34,11 +35,12 @@ public class ProductReviewsRestController {
 
     @PostMapping
     public Mono<ResponseEntity<ProductReview>> createProductReview(
+            Mono<JwtAuthenticationToken> jwtAuthenticationTokenMono,
             @Valid @RequestBody Mono<NewProductReviewPayload> payloadMono,
             UriComponentsBuilder uriComponentsBuilder) {
-        return payloadMono
+        return jwtAuthenticationTokenMono.flatMap(token -> payloadMono
                 .flatMap(payload -> this.productReviewsService
-                        .createProductReview(payload.productId(), payload.rating(), payload.review()))
+                        .createProductReview(payload.productId(), payload.rating(), payload.review(), token.getToken().getSubject())))
                 .map(productReview -> ResponseEntity
                         .created(uriComponentsBuilder.replacePath("feedback-api/product-reviews/{id}")
                                 .build(productReview.getId()))
