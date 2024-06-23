@@ -8,7 +8,7 @@ stack:
 - security (oauth2, keycloak)
 - thymeleaf
 - spring data jpa, hibernate
-- postgres + flyway
+- postgres + flyway, mongoDB
 - lombok
 - junit, mockito, wiremock
 - ?

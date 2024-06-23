@@ -30,12 +30,13 @@ public class WebClientProductReviewsClientImpl implements ProductReviewsClient {
     public Mono<ProductReview> createProductReview(Integer productId, Integer rating, String review) {
         return this.webClient
                 .post()
-                .uri("/feedback-api/product-reviews/")
+                .uri("/feedback-api/product-reviews")
                 .bodyValue(new NewProductReviewPayload(productId, rating, review))
                 .retrieve()
                 .bodyToMono(ProductReview.class)
                 .onErrorMap(WebClientResponseException.BadRequest.class,
-                        ex -> new ClientBadRequestException(ex,
-                                ((List<String>) ex.getResponseBodyAs(ProblemDetail.class).getProperties().get("errors"))));
+                        exception -> new ClientBadRequestException(exception,
+                                ((List<String>) exception.getResponseBodyAs(ProblemDetail.class)
+                                        .getProperties().get("errors"))));
     }
 }

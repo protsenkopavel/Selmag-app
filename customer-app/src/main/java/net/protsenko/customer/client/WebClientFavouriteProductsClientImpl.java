@@ -45,8 +45,9 @@ public class WebClientFavouriteProductsClientImpl implements FavouriteProductsCl
                 .retrieve()
                 .bodyToMono(FavouriteProduct.class)
                 .onErrorMap(WebClientResponseException.BadRequest.class,
-                        ex -> new ClientBadRequestException(ex,
-                                ((List<String>) ex.getResponseBodyAs(ProblemDetail.class).getProperties().get("errors"))));
+                        exception -> new ClientBadRequestException(exception,
+                                ((List<String>) exception.getResponseBodyAs(ProblemDetail.class)
+                                        .getProperties().get("errors"))));
     }
 
     @Override
