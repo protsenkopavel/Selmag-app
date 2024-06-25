@@ -15,16 +15,17 @@ public class SecurityBeans {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests(authorizeHttpRequests ->
-                        authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/catalogue-api/products")
-                                .hasAnyAuthority("SCOPE_edit_catalogue")
-                                .requestMatchers(HttpMethod.PATCH, "/catalogue-api/products/{productId:\\d}")
-                                .hasAnyAuthority("SCOPE_edit_catalogue")
-                                .requestMatchers(HttpMethod.DELETE, "/catalogue-api/products/{productId:\\d}")
-                                .hasAnyAuthority("SCOPE_edit_catalogue")
-                                .requestMatchers(HttpMethod.GET).permitAll()
+                .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/catalogue-api/products")
+                        .hasAnyAuthority("SCOPE_edit_catalogue")
+                        .requestMatchers(HttpMethod.PATCH, "/catalogue-api/products/{productId:\\d}")
+                        .hasAnyAuthority("SCOPE_edit_catalogue")
+                        .requestMatchers(HttpMethod.DELETE, "/catalogue-api/products/{productId:\\d}")
+                        .hasAnyAuthority("SCOPE_edit_catalogue")
+                        .requestMatchers(HttpMethod.GET).permitAll()
 //                                .hasAnyAuthority("SCOPE_view_catalogue")
-                                .anyRequest().denyAll())
+                        .anyRequest().denyAll())
                 .csrf(CsrfConfigurer::disable)
                 .sessionManagement(sessionManagement -> sessionManagement
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

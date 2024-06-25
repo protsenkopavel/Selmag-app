@@ -1,5 +1,7 @@
 package net.protsenko.feedback.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.protsenko.feedback.controller.payload.NewProductReviewPayload;
@@ -28,6 +30,9 @@ public class ProductReviewsRestController {
     private final ReactiveMongoTemplate mongoTemplate;
 
     @GetMapping("by-product-id/{productId:\\d+}")
+    @Operation(
+            security = @SecurityRequirement(name = "keycloak")
+    )
     public Flux<ProductReview> findProductReviewsByProductId(@PathVariable("productId") int productId) {
         return this.mongoTemplate
                 .find(query(where("productId").is(productId)), ProductReview.class);
