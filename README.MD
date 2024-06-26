@@ -11,6 +11,7 @@ stack:
 - postgres + flyway, mongoDB
 - lombok
 - junit, mockito, wiremock, testcontainers
+- spring doc, swagger
 - ?
 
 features:
@@ -20,3 +21,4 @@ services:
 - manager-app (mvc)
 - customer-app (webflux)
 - feedback-service (rest-webflux)
+- admin-server (infrastructure)
