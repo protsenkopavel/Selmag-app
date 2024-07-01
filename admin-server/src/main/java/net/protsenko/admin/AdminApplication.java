@@ -1,4 +1,4 @@
-package net.protsenko;
+package net.protsenko.admin;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
