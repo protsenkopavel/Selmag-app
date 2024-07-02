@@ -6,12 +6,12 @@ spring:
         instance:
           name: catalogue-service
           service-host-type: ip
-        url: http://localhost:8085
+        url: http://172.17.0.1:8085
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8082/realms/selmag
+          issuer-uri: http://172.17.0.1:8082/realms/selmag
       client:
         registration:
           keycloak:
@@ -22,10 +22,10 @@ spring:
               - metrics_server
         provider:
           keycloak:
-            issuer-uri: http://localhost:8082/realms/selmag
+            issuer-uri: http://172.17.0.1:8082/realms/selmag
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/catalogue
+    url: jdbc:postgresql://172.17.0.1:5432/catalogue
     username: catalogue
     password: catalogue
   flyway:
@@ -45,7 +45,7 @@ springdoc:
       client-id: catalogue-service-swagger-ui
       use-pkce-with-authorization-code-grant: true
 keycloak:
-  uri: http://localhost:8082
+  uri: http://172.17.0.1:8082
 management:
   health:
     livenessstate:

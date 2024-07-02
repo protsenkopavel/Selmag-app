@@ -12,7 +12,7 @@ stack:
 - lombok
 - junit, mockito, wiremock, testcontainers
 - spring doc, swagger
-- grafana, prometheus
+- grafana, loki, tempo, prometheus
 - ?
 
 features:

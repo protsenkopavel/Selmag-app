@@ -1,11 +1,13 @@
 selmag:
   services:
     catalogue:
-      uri: http://localhost:8081
+      uri: http://172.17.0.1:8081
       registration-id: keycloak
 spring:
+  application:
+    name: selmag-manager-app
   datasource:
-    url: jdbc:postgresql://localhost:5433/manager
+    url: jdbc:postgresql://172.17.0.1:5433/manager
     username: manager
     password: manager
   security:
@@ -13,7 +15,7 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8082/realms/selmag
+            issuer-uri: http://172.17.0.1:8082/realms/selmag
             user-name-attribute: preferred_username
         registration:
           keycloak:
