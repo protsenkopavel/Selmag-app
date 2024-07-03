@@ -5,7 +5,7 @@
 stack:
 
 - spring boot (web, validation, webflux)
-- spring cloud netflix eureka, config
+- spring cloud netflix eureka, config, api gateway
 - security (oauth2, keycloak)
 - thymeleaf
 - spring data jpa, hibernate
@@ -26,3 +26,4 @@ services:
 - admin-server (infrastructure)
 - eureka-server (infrastructure)
 - config-server (infrastructure)
+- api-gateway (infrastructure)
