@@ -1,12 +1,19 @@
+server:
+  port: 8084
 spring:
+  application:
+    name: selmag-feedback-service
   boot:
     admin:
       client:
-        enabled: true
-        instance:
-          name: catalogue-service
-          service-host-type: ip
-        url: http://172.17.0.1:8085
+        enabled: false
+#        instance:
+#          name: catalogue-service
+#          service-host-type: ip
+#        url: http://172.17.0.1:8085
+  data:
+    mongodb:
+      uri: mongodb://172.17.0.1:27017/feedback
   security:
     oauth2:
       resourceserver:
@@ -15,34 +22,18 @@ spring:
       client:
         registration:
           keycloak:
-            client-id: catalogue-service
-            client-secret: ZGBNwq2XoP2kc8ibRC4DxRlPkwJVKIx6
+            client-id: feedback-service
+            client-secret: vBA4y1wofwHGOvJTgrivAHb9i59Ske8p
             authorization-grant-type: client_credentials
             scope:
               - metrics_server
         provider:
           keycloak:
             issuer-uri: http://172.17.0.1:8082/realms/selmag
-
-  datasource:
-    url: jdbc:postgresql://172.17.0.1:5432/catalogue
-    username: catalogue
-    password: catalogue
-  flyway:
-    schemas:
-      - public
-      - catalogue
-  jpa:
-    show-sql: true
-server:
-  port: 8081
-logging:
-  level:
-    sql: info
 springdoc:
   swagger-ui:
     oauth:
-      client-id: catalogue-service-swagger-ui
+      client-id: feedback-service-swagger-ui
       use-pkce-with-authorization-code-grant: true
 keycloak:
   uri: http://172.17.0.1:8082
@@ -64,4 +55,7 @@ management:
       probability: 1.0
 eureka:
   client:
-    enabled: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true

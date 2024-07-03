@@ -1,6 +1,8 @@
 server:
   port: 8085
 spring:
+  application:
+    name: selmag-admin-server
   security:
     oauth2:
       resourceserver:
@@ -10,7 +12,6 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://172.17.0.1:8082/realms/selmag
-            user-name-attribute: preferred_username
         registration:
           keycloak:
             authorization-grant-type: client_credentials
@@ -25,6 +26,13 @@ spring:
               - openid
             client-id: admin-service
             client-secret: hNl7X5b3qO9mlNqY9L9W2GLZ7iBISjlv
+          discovery:
+            provider: keycloak
+            client-id: admin-service
+            client-secret: hNl7X5b3qO9mlNqY9L9W2GLZ7iBISjlv
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
 management:
   endpoints:
     web:
@@ -32,3 +40,10 @@ management:
         include:
           - health
           - prometheus
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://172.17.0.1:8761/eureka/
+    register-with-eureka: false

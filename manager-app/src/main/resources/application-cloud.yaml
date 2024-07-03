@@ -1,7 +1,7 @@
 selmag:
   services:
     catalogue:
-      uri: http://172.17.0.1:8081
+      uri: lb://selmag-catalogue-service
       registration-id: keycloak
 spring:
   application:
@@ -26,6 +26,9 @@ spring:
               - view_catalogue
               - edit_catalogue
               - microprofile-jwt
-eureka:
+eureureka:
+  instance:
+    prefer-ip-address: true
   client:
-    enabled: false
+    service-url:
+      defaultZone: http://172.18.0.1:8761/eureka/

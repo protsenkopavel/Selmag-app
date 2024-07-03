@@ -1,12 +1,14 @@
 spring:
+  application:
+    name: selmag-catalogue-service
   boot:
     admin:
       client:
-        enabled: true
-        instance:
-          name: catalogue-service
-          service-host-type: ip
-        url: http://172.17.0.1:8085
+        enabled: false
+#        instance:
+#          name: catalogue-service
+#          service-host-type: ip
+#        url: http://172.17.0.1:8085
   security:
     oauth2:
       resourceserver:
@@ -20,6 +22,13 @@ spring:
             authorization-grant-type: client_credentials
             scope:
               - metrics_server
+          discovery:
+            provider: keycloak
+            client-id: catalogue-service
+            client-secret: ZGBNwq2XoP2kc8ibRC4DxRlPkwJVKIx6
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
         provider:
           keycloak:
             issuer-uri: http://172.17.0.1:8082/realms/selmag
@@ -63,5 +72,8 @@ management:
     sampling:
       probability: 1.0
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
-    enabled: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

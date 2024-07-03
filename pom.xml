@@ -10,19 +10,23 @@
   <name>selmag-parent</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>manager-app</module>
+      <module>manager-app</module>
       <module>catalogue-service</module>
       <module>customer-app</module>
       <module>feedback-service</module>
       <module>admin-server</module>
+      <module>eureka-server</module>
   </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -30,6 +34,15 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>2023.0.0</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
