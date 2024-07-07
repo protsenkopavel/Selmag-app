@@ -14,6 +14,7 @@ stack:
 - junit, mockito, wiremock, testcontainers
 - spring doc, swagger
 - grafana, loki, tempo, prometheus
+- docker
 - ?
 
 features:
