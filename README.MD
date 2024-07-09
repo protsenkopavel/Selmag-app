@@ -15,10 +15,8 @@ stack:
 - spring doc, swagger
 - grafana, loki, tempo, prometheus
 - docker
-- ?
+- kubernetes
 
-features:
-- 
 services:
 - catalogue-service (rest)
 - manager-app (mvc)
